@@ -4,21 +4,14 @@ Created on Wed Jun 10 15:13:21 2015
 
 @author: nick
 Chi Huan modified for personal funs and python3
-<<<<<<< HEAD
 v1.0
-=======
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
 """
 
 import serial
 import subprocess as sp
 import json   
-<<<<<<< HEAD
 import numpy as np
 import time
-=======
-
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
 
 
 
@@ -67,11 +60,7 @@ class WindFreakUsb2(object):
         
     def __init__(self, port):
         self.serial = self._open_port(port)
-<<<<<<< HEAD
         self._serial_write('\n')# flush io buffer
-=======
-        self._serial_write(b'+\n')# flush io buffer
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
         print (self._serial_read()) #will read unknown command
         self.set_clock(1)
         
@@ -82,7 +71,6 @@ class WindFreakUsb2(object):
         ser.timeout = 1
         return ser
         
-<<<<<<< HEAD
     def _serial_write2(self, string):
         self.serial.write((string + '\n').encode('UTF-8'))
     def _serial_write(self, string2):
@@ -91,14 +79,6 @@ class WindFreakUsb2(object):
         msg_string = self.serial.readline().decode()
         # Remove any linefeeds etc
         print(msg_string)
-=======
-    def _serial_write(self, string):
-        self.serial.write(string + '\n')
-        
-    def _serial_read(self):
-        msg_string = self.serial.readline()
-        # Remove any linefeeds etc
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
         msg_string = msg_string.rstrip()
         return msg_string
         
@@ -157,7 +137,6 @@ class WindFreakUsb2(object):
         
     def close(self):
         self.serial.close()
-<<<<<<< HEAD
     def slow_set_freq(self,freq,step):
     
         current_f=float(self.get_freq())/1000
@@ -184,9 +163,6 @@ class WindFreakUsb2(object):
         print('Finish moving')
         print('Final freq',self.get_freq())
 
-=======
-        
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
 
         
 class AnalogComm(object):
@@ -554,13 +530,8 @@ class DDSComm(object):
         self.set_freq(freq)
         self.on()
         
-<<<<<<< HEAD
     def on(self,ampl=100):
         self.amplitude(ampl,'ampunits')
-=======
-    def on(self):
-        self.amplitude(100,'ampunits')
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
     
     def off(self):
         self.amplitude(0,'ampunits')    
@@ -588,8 +559,4 @@ if __name__=='__main__':
     w=780
     pm=PowerMeterComm(Power_meter_address)
     pm.get_voltage()
-<<<<<<< HEAD
     print(pm.get_power(w)*1000)
-=======
-    print(pm.get_power(w)*1000)
->>>>>>> cacb0e8db830e37de6b5b0bbf580d1894c12d923
